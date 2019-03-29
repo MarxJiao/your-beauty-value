@@ -1,0 +1,20 @@
+<!--index.wxml-->
+<view class="container">
+
+  <!-- 上传图片 -->
+  <view class="uploader">
+    <view class="uploader-text" bindtap="action">
+      <text>上传图片测试颜值</text>
+    </view>
+  </view>
+
+  <view wx:if="{{result}}">
+    <view> {{gender}}，{{age}}岁，颜值{{beauty}}，{{face_shape}}，{{glasses}}，{{expression}}，{{emotion}}。 </view>
+    <image style="width: 100%;" mode="widthFix" src="{{imageUrl}}"></image>
+  </view>
+
+  <view  wx:if="{{noPerson}}"> 图中无人 </view>
+  <view  wx:if="{{noResult}}"> 程序挂了 </view>
+  <view  wx:if="{{loading}}"> 加载之中 </view>
+  
+</view>

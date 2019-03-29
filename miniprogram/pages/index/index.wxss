@@ -1,0 +1,28 @@
+/**index.wxss**/
+page {
+  background: #f6f6f6;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+.uploader {
+  height: 140rpx;
+  padding: 0 0 0 40rpx;
+  width: 100%;
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.1);
+  border-left: none;
+  border-right: none;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  transition: all 300ms ease;
+}
+
+.uploader-text {
+  width: 100%;
+  line-height: 52rpx;
+  font-size: 36rpx;
+  color: #007aff;
+}
