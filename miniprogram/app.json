@@ -8,5 +8,6 @@
     "navigationBarBackgroundColor": "#F6F6F6",
     "navigationBarTitleText": "你好看吗？",
     "navigationBarTextStyle": "black"
-  }
+  },
+  "sitemapLocation": "sitemap.json"
 }
