@@ -5,8 +5,11 @@ page {
   flex-direction: column;
   justify-content: flex-start;
 }
-
+.text {
+  padding: 0 10px 5px 10px;
+}
 .uploader {
+  box-sizing: border-box;
   height: 140rpx;
   padding: 0 0 0 40rpx;
   width: 100%;
@@ -26,3 +29,16 @@ page {
   font-size: 36rpx;
   color: #007aff;
 }
+
+.bottom {
+  height: 50px;
+  padding: 10px 0 0 0;
+}
+
+.my-button {
+  height: 30px;
+  width: 100ppx;
+  font-size: 12px;
+}
+
+

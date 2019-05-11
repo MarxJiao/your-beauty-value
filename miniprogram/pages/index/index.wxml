@@ -8,13 +8,15 @@
     </view>
   </view>
 
-  <view wx:if="{{result}}">
-    <view> {{gender}}，{{age}}岁，颜值{{beauty}}，{{face_shape}}，{{glasses}}，{{expression}}，{{emotion}}。 </view>
+  <view wx:if="{{showResult}}">
+    <view class="text">{{result}}</view>
+    <view class="text">{{shareMsg}}</view>
     <image style="width: 100%;" mode="widthFix" src="{{imageUrl}}"></image>
   </view>
-
-  <view  wx:if="{{noPerson}}"> 图中无人 </view>
-  <view  wx:if="{{noResult}}"> 程序挂了 </view>
-  <view  wx:if="{{loading}}"> 加载之中 </view>
+  
+<view class="bottom">
+<button class="my-button" open-type="contact" bindcontact="handleContact">联系客服</button>
+</view>
+  
   
 </view>
