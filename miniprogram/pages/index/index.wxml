@@ -10,7 +10,10 @@
 
   <view wx:if="{{showResult}}">
     <view class="text">{{result}}</view>
-    <view class="text">{{shareMsg}}</view>
+    <view class="text">
+      {{shareMsg}}
+      <button class="my-share-button" open-type="share" bindcontact="handleContact">分享</button>
+    </view>
     <image style="width: 100%;" mode="widthFix" src="{{imageUrl}}"></image>
   </view>
   

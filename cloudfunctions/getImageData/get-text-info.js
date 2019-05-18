@@ -90,7 +90,7 @@ function getShareInfo(info) {
                 shareTitle = '我的颜值还在发育中，以后会好的。';
             }
             else {
-                shareMsg = '长得丑不是你的错，但分享出去吓人就是你的不对了';
+                shareMsg = '男人又老又丑不要紧，最重要的是要有才华。';
                 shareTitle = '嗷呜~~~。';
             }
         }
@@ -118,6 +118,9 @@ function getShareInfo(info) {
             }
             else if (info.age > 30) {
                 shareMsg = '主要看气质。还有，多读书';
+            }
+            else {
+                shareMsg = '如花美眷，似水年华';
             }
             shareTitle = '经测量，我貌美如花。';
         }

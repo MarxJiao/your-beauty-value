@@ -41,4 +41,12 @@ page {
   font-size: 12px;
 }
 
-
+.my-share-button {
+  display: inline-block;
+  width: 70px;
+  padding: 5px;
+  font-size: 12px;
+  height: auto;
+  line-height: 1;
+  vertical-align:middle;
+}
