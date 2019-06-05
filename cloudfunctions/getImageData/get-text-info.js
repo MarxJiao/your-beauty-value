@@ -50,7 +50,7 @@ module.exports = function (personData) {
 function getBaseInfo(personData) {
     const info = {
         age: personData.age,
-        persent: personData.beauty + personData.beauty / 4 - .3,
+        persent: (personData.beauty + personData.beauty / 4 - .3).toFixed(2),
         beauty: personData.beauty,
         expression: dataMap.expression[personData.expression.type],
         face_shape: dataMap.face_shape[personData.face_shape.type],

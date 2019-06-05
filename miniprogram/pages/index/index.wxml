@@ -4,7 +4,7 @@
   <!-- 上传图片 -->
   <view class="uploader">
     <view class="uploader-text" bindtap="action">
-      <text>上传图片测试颜值</text>
+      <text>点击这里，测试颜值</text>
     </view>
   </view>
 
