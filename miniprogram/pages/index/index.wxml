@@ -1,25 +1,29 @@
 <!--index.wxml-->
 <view class="container">
 
-  <!-- 上传图片 -->
-  <view class="uploader">
-    <view class="uploader-text" bindtap="action">
-      <text>点击这里，测试颜值</text>
+    <!-- 上传图片 -->
+    <view class="uploader">
+        <view class="uploader-text" bindtap="action">
+            <text>点击这里，测试颜值</text>
+        </view>
     </view>
-  </view>
 
-  <view wx:if="{{showResult}}">
-    <view class="text">{{result}}</view>
-    <view class="text">
-      {{shareMsg}}
-      <button class="my-share-button" open-type="share" bindcontact="handleContact">分享</button>
+    <view class="main-content">
+        <view wx:if="{{tipInfo}}" class="text">{{tipInfo}}</view>
+        <view wx:if="{{showResult}}">
+            <view class="text">{{result}}</view>
+            <view class="text">
+                {{shareMsg}}
+                <button class="my-share-button" open-type="share" bindcontact="handleContact">分享</button>
+            </view>
+            <image style="width: 100%;" mode="widthFix" src="{{imageUrl}}"></image>
+        </view>
     </view>
-    <image style="width: 100%;" mode="widthFix" src="{{imageUrl}}"></image>
-  </view>
-  
-<view class="bottom">
-<button class="my-button" open-type="contact" bindcontact="handleContact">联系客服</button>
-</view>
-  
-  
+
+    <view class="bottom">
+        <button class="my-button" open-type="contact" bindcontact="handleContact">联系客服</button>
+    </view>
+
+    <official-account></official-account>
+
 </view>
