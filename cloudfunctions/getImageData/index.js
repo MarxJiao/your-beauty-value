@@ -7,8 +7,28 @@ const handleResult = require('./handle-data-result');
 
 cloud.init();
 
+
+async function addFile(fileId) {
+    const db = cloud.database({
+        env: cloud.DYNAMIC_CURRENT_ENV
+    });
+    try {
+        return await db.collection('files').add({
+            // data 字段表示需新增的 JSON 数据
+            data: {
+                fileId,
+                createTime: new Date(),
+                openId: cloud.getWXContext().OPENID
+            }
+        })
+    } catch (e) {
+        console.error(e)
+    }
+}
+
 // 云函数入口函数
 exports.main = async (event, context) => {
+    addFile(event.fileID);
 
     // 获取图片临时的 https 地址
     const imageUrl = await cloud.getTempFileURL({
@@ -40,3 +60,4 @@ exports.main = async (event, context) => {
         };
     }
 };
+
