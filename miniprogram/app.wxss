@@ -4,4 +4,21 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-} 
+  font-size: 14px;
+}
+
+.beauty-button {
+    text-align: center;
+    padding: 0 40px;
+    height: 40px;
+    border-radius: 40px;
+    background-color: #1890ff;
+    border-color: #1890ff;
+    color: #fff;
+    line-height: 40px;
+}
+
+.loading {
+    background-color: #81b7fa;
+    border-color: #81b7fa;
+}

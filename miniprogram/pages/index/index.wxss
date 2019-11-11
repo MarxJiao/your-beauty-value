@@ -8,6 +8,14 @@ page {
 .main-content {
     padding: 10px 0 0 0;
 }
+.main {
+    text-align: center;
+}
+.title {
+    text-align: center;
+    font-size: 30px;
+    padding: 100px 0 60px 0;
+}
 .text {
   padding: 0 10px 5px 10px;
 }
