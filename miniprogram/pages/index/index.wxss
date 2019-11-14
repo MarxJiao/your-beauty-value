@@ -7,10 +7,9 @@ page {
 }
 .main-content {
     padding: 10px 0 0 0;
-}
-.main {
     text-align: center;
 }
+
 .title {
     text-align: center;
     font-size: 30px;

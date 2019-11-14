@@ -1,8 +1,6 @@
 let interstitialAd = null;
 Page({
     data: {
-        // 是否展示结果
-        showResult: false,
         // 结果信息
         result: '',
         // 图片地址，用来显示图片。
@@ -11,10 +9,14 @@ Page({
         shareTitle: '想知道你的颜值吗？来测试下吧',
         // 其实是图片评价，开始时想做到分享后才展示的。
         shareMsg: '',
-        // 提示信息，用来提示现在程序的状态，比如上传中，图片分析中。
-        tipInfo: '',
-        // 程序运行状态
-        status: '',
+        // 错误信息
+        errMsg: '',
+        // loading 信息
+        loadingMsg: '',
+        // 上传按钮的文案
+        uploadBtnText: '点击上传',
+        // 程序运行状态 start, uploading, uploadError, analyzing, analyzeError, result
+        status: 'start',
         // 用来标记广告状态
         showAdd: false
     },
@@ -28,49 +30,51 @@ Page({
             interstitialAd = wx.createInterstitialAd({
                 adUnitId: 'adunit-4eaf816ccc1321e0' 
             });
-            interstitialAd.onClose(res => {
-                if (this.data.status === 'success') {
-                    this.setData({
-                        showAdd: false,
-                        showResult: true
-                    });
-                }
-                else {
-                    this.setData({
-                        showAdd: false
-                    });
-                }
-            })
-
+            interstitialAd.onClose(res => {});
         }
     },
 
     setStatus(status, msg) {
         switch (status) {
+            case 'start':
+                this.setData({
+                    status,
+                    uploadBtnText: '点击上传'
+                });
+                break;
             case 'uploading':
                 this.setData({
-                    showResult: false,
-                    tipInfo: '图片上传中'
+                    status,
+                    loadingMsg: '图片上传中...'
                 });
                 break;
-            case 'analysing':
+            case 'uploadError':
                 this.setData({
-                    tipInfo: '图片分析中'
+                    status,
+                    errMsg: '图片上传失败，请重试',
+                    uploadBtnText: '重新测量'
                 });
                 break;
-            case 'fail':
+            case 'analyzing':
                 this.setData({
-                    tipInfo: msg || ''
+                    status,
+                    loadingMsg: '图片分析中...'
                 });
                 break;
-            case 'success':
+            case 'analyzeError':
                 this.setData({
-                    tipInfo: ''
+                    status,
+                    errMsg: msg,
+                    uploadBtnText: '重新测量'
                 });
+                break;
+            case 'result':
+                this.setData({
+                    status,
+                    uploadBtnText: '重新测量'
+                });
+                break;
         }
-        this.setData({
-            status
-        })
     },
 
     chooseIamge() {
@@ -119,13 +123,12 @@ Page({
                 result: result.data.text,
                 shareMsg: result.data.shareMsg,
                 shareTitle: result.data.shareTitle,
-                imageUrl: result.data.imageUrl,
-                showResult: !this.data.showAdd
+                imageUrl: result.data.imageUrl
             });
-            this.setStatus('success');
+            this.setStatus('result');
         }
         else {
-            this.setStatus('fail', result.errMsg);
+            this.setStatus('analyzeError', result.errMsg);
         }
     },
 
@@ -144,7 +147,7 @@ Page({
             })
             return this.doUpload(res);
         }).then(res => {
-            this.setStatus('analysing');
+            this.setStatus('analyzing');
             return this.getImageInfo(res.fileID);
         }).then(res => {
             this.handleResult(res);
@@ -153,7 +156,7 @@ Page({
             if (err && err.errMsg === 'chooseImage:fail cancel') {
                 return;
             }
-            this.setStatus('fail', '程序出错，请稍后重试。或者向客服反馈');
+            this.setStatus('analyzeError', '程序出错，请稍后重试。或者点击帮助向客服反馈');
         });
     }
 });

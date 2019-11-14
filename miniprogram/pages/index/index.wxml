@@ -1,32 +1,34 @@
 <!--index.wxml-->
 <view class="container">
 
-    <view class="main">
-        <view class="title">想知道你的颜值吗?</view>
-        <view class="beauty-button" bindtap="action">
-            点击测量
-        </view>
-        <view class="beauty-button loading" bindtap="action">
-            图片分析中...
-        </view>
-    </view>
-    
+    <view class="title" wx:if="{{status !== 'result'}}">想知道你的颜值吗?</view>
 
-    <view class="main-content">
-        <view wx:if="{{tipInfo}}" class="text">{{tipInfo}}</view>
-        <view wx:if="{{showResult}}">
+    <view class="error-msg" wx:if="{{status === 'uploadError' || status === 'analyzeError'}}">{{errMsg}}</view>
+
+    <view class="result" wx:if="{{status === 'result'}}">
+        <view class="result-card">
+            <image style="width: 100%;" mode="widthFix" src="{{imageUrl}}"></image>
             <view class="text">{{result}}</view>
             <view class="text">
                 {{shareMsg}}
                 <button class="my-share-button" open-type="share" bindcontact="handleContact">分享</button>
             </view>
-            <image style="width: 100%;" mode="widthFix" src="{{imageUrl}}"></image>
+        </view>
+        <view class="result-operation">
+            <button>分享</button>
+            <button>返回</button>
         </view>
     </view>
 
-    <view class="bottom">
-        <button class="my-button" open-type="contact" bindcontact="handleContact">联系客服</button>
+    <view class="beauty-button" wx:if="{{status !== 'uploading' && status !== 'analyzing'}}" bindtap="action">
+        {{uploadBtnText}}
     </view>
+
+    <view class="beauty-button loading"  wx:if="{{status === 'uploading' || status === 'analyzing'}}">
+        {{loadingMsg}}
+    </view>
+
+    <navigator url="/pages/help/help">帮助</navigator>
 
     <official-account></official-account>
 
