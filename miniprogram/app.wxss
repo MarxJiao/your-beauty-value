@@ -4,4 +4,50 @@
   flex-direction: column;
   align-items: center;
   box-sizing: border-box;
-} 
+  font-size: 14px;
+}
+
+.button {
+    font-size: 14px;
+    text-align: center;
+    padding: 0 40px;
+    height: 40px;
+    border-radius: 40px;
+    background-color: #36abab;
+    border-color: #36abab;
+    color: #fff;
+    line-height: 40px;
+}
+
+.loading {
+    background-color: #7cc8c8;
+    border-color: #7cc8c8;
+}
+
+
+.result-card {
+    box-sizing: border-box;
+    margin: 30rpx;
+    padding: 0;
+    width: 690rpx;
+    color: rgba(0,0,0,0.65);
+    font-size: 14px;
+    line-height: 1.5;
+    list-style: none;
+    background: #fff;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.09);
+}
+
+.card-title {
+    color: #000;
+    font-weight: 500;
+    padding: 10px 15px 5px;
+    line-height: 1.5;
+}
+
+.card-text {
+    padding: 0 15px 10px;
+    line-height: 1.5;
+}

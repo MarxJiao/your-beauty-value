@@ -1,0 +1,19 @@
+<!--pages/help/help.wxml-->
+
+<view class="result-card">
+<view class="card-title">关于我们</view>
+
+<view class="card-text">
+基于百度人工智能接口和微信云开发功能，开发的测量颜值的娱乐小程序。无需登录授权就能使用。有任何使用问题或需求，可点击下方的「联系客服」按钮反馈。大家觉得这个小程序还不错的话，欢迎点击右上角三个点，将小程序添加到“我的小程”。祝大家玩的开心。
+</view>
+
+<view class="card-title">关注我们</view>
+<view class="card-text">
+推荐大家关注我们的公众号：文艺遇上科技。文艺向左，科技向右，可惜我左右不分呐。（点击二维码查看大图，长按保存）
+</view>
+
+<image class="qrcode" src="cloud://xcx-0b2817.7863-xcx-0b2817-1257953462/active/qrcode.jpg" mode="aspectFit" bindtap="preview"></image>
+
+</view>
+
+<button class="button help-button" open-type="contact" bindcontact="handleContact">联系客服</button>

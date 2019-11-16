@@ -1,55 +1,66 @@
 /**index.wxss**/
 page {
-  background: #f6f6f6;
+  background: #fff;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
 }
 .main-content {
     padding: 10px 0 0 0;
-}
-.text {
-  padding: 0 10px 5px 10px;
-}
-.uploader {
-  box-sizing: border-box;
-  height: 140rpx;
-  padding: 0 0 0 40rpx;
-  width: 100%;
-  background: #fff;
-  border: 1px solid rgba(0, 0, 0, 0.1);
-  border-left: none;
-  border-right: none;
-  display: flex;
-  flex-direction: row;
-  align-items: center;
-  transition: all 300ms ease;
+    text-align: center;
 }
 
-.uploader-text {
-  width: 100%;
-  line-height: 52rpx;
-  font-size: 36rpx;
-  color: #007aff;
+.title {
+    text-align: center;
+    font-size: 30px;
+    padding: 100px 0 60px 0;
 }
 
-.bottom {
-  height: 50px;
-  padding: 10px 0 0 0;
+.beauty-button {
+    box-sizing: border-box;
+    margin: 0 20px;
+    width: 690rpx;
 }
 
-.my-button {
-  height: 30px;
-  width: 100ppx;
-  font-size: 12px;
+.help-button {
+    margin: 60rpx;
+    color: #36abab;
+    text-decoration: underline;
 }
 
-.my-share-button {
-  display: inline-block;
-  width: 70px;
-  padding: 5px;
-  font-size: 12px;
-  height: auto;
-  line-height: 1;
-  vertical-align:middle;
+
+.result-operation {
+    width: 690rpx;
+    margin: 0 30rpx 30rpx;
+    display: flex;
+    justify-content: space-between;
+}
+
+.result-operation button {
+    margin: 0;
+    width: 300rpx;
+}
+
+.result-operation .return-button {
+    color: #36abab;
+    background-color: #fff;
+    border: 1px solid #36abab;
+}
+
+.error-msg {
+    box-sizing: border-box;
+    margin: 20px;
+    padding: 8px 15px;
+    color: #f5222d;
+    font-size: 14px;
+    font-variant: tabular-nums;
+    line-height: 1.5;
+    list-style: none;
+    -webkit-font-feature-settings: 'tnum';
+    font-feature-settings: 'tnum';
+    position: relative;
+    word-wrap: break-word;
+    border-radius: 4px;
+    background-color: #fff1f0;
+    border: 1px solid #ffa39e;
 }

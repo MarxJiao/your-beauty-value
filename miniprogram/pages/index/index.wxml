@@ -1,29 +1,33 @@
 <!--index.wxml-->
 <view class="container">
 
-    <!-- 上传图片 -->
-    <view class="uploader">
-        <view class="uploader-text" bindtap="action">
-            <text>点击这里，测试颜值</text>
+    <view class="title" wx:if="{{status !== 'result'}}">
+        <view>想知道你的颜值</view>
+        <view>有多高吗?</view>
+    </view>
+
+    <view class="error-msg" wx:if="{{status === 'uploadError' || status === 'analyzeError'}}">错误信息：{{errMsg}}</view>
+
+    <view class="result" wx:if="{{status === 'result'}}">
+        <view class="result-card">
+            <image bindtap="viewImages" style="width: 100%;" mode="widthFix" src="{{imageUrl}}"></image>
+            <view class="card-title">{{shareMsg}}</view>
+            <view class="card-text">{{result}}</view>
+            
+        </view>
+        <view class="result-operation">
+            <button class="button return-button" bindtap="reset">返回</button>
+            <button class="button share-button" open-type="share" bindcontact="handleContact">分享</button>
         </view>
     </view>
 
-    <view class="main-content">
-        <view wx:if="{{tipInfo}}" class="text">{{tipInfo}}</view>
-        <view wx:if="{{showResult}}">
-            <view class="text">{{result}}</view>
-            <view class="text">
-                {{shareMsg}}
-                <button class="my-share-button" open-type="share" bindcontact="handleContact">分享</button>
-            </view>
-            <image style="width: 100%;" mode="widthFix" src="{{imageUrl}}"></image>
-        </view>
+    <view class="button beauty-button" wx:if="{{status !== 'uploading' && status !== 'analyzing'}}" bindtap="action">
+        {{uploadBtnText}}
     </view>
 
-    <view class="bottom">
-        <button class="my-button" open-type="contact" bindcontact="handleContact">联系客服</button>
+    <view class="button beauty-button loading"  wx:if="{{status === 'uploading' || status === 'analyzing'}}">
+        {{loadingMsg}}
     </view>
 
-    <official-account></official-account>
-
+    <navigator class="help-button" url="/pages/help/help">了解更多</navigator>
 </view>
