@@ -1,35 +1,33 @@
 <!--index.wxml-->
 <view class="container">
 
-    <view class="title" wx:if="{{status !== 'result'}}">想知道你的颜值吗?</view>
+    <view class="title" wx:if="{{status !== 'result'}}">
+        <view>想知道你的颜值</view>
+        <view>有多高吗?</view>
+    </view>
 
-    <view class="error-msg" wx:if="{{status === 'uploadError' || status === 'analyzeError'}}">{{errMsg}}</view>
+    <view class="error-msg" wx:if="{{status === 'uploadError' || status === 'analyzeError'}}">错误信息：{{errMsg}}</view>
 
     <view class="result" wx:if="{{status === 'result'}}">
         <view class="result-card">
-            <image style="width: 100%;" mode="widthFix" src="{{imageUrl}}"></image>
-            <view class="text">{{result}}</view>
-            <view class="text">
-                {{shareMsg}}
-                <button class="my-share-button" open-type="share" bindcontact="handleContact">分享</button>
-            </view>
+            <image bindtap="viewImages" style="width: 100%;" mode="widthFix" src="{{imageUrl}}"></image>
+            <view class="card-title">{{shareMsg}}</view>
+            <view class="card-text">{{result}}</view>
+            
         </view>
         <view class="result-operation">
-            <button>分享</button>
-            <button>返回</button>
+            <button class="button return-button" bindtap="reset">返回</button>
+            <button class="button share-button" open-type="share" bindcontact="handleContact">分享</button>
         </view>
     </view>
 
-    <view class="beauty-button" wx:if="{{status !== 'uploading' && status !== 'analyzing'}}" bindtap="action">
+    <view class="button beauty-button" wx:if="{{status !== 'uploading' && status !== 'analyzing'}}" bindtap="action">
         {{uploadBtnText}}
     </view>
 
-    <view class="beauty-button loading"  wx:if="{{status === 'uploading' || status === 'analyzing'}}">
+    <view class="button beauty-button loading"  wx:if="{{status === 'uploading' || status === 'analyzing'}}">
         {{loadingMsg}}
     </view>
 
-    <navigator url="/pages/help/help">帮助</navigator>
-
-    <official-account></official-account>
-
+    <navigator class="help-button" url="/pages/help/help">了解更多</navigator>
 </view>

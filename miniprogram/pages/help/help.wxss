@@ -1,1 +1,16 @@
 /* pages/help/help.wxss */
+page {
+  background: #fff;
+}
+
+.help-button {
+    margin: 30rpx 100rpx;
+}
+
+.qrcode {
+    margin: -10px 195rpx 0;
+    width: 300rpx;
+    height: 300rpx;
+}
+
+

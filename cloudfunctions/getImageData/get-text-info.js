@@ -60,7 +60,7 @@ function getBaseInfo(personData) {
     };
     return {
         info,
-        text: `${info.gender}，${info.age}岁，颜值${info.beauty}，超过了全球${info.persent}%的人，${info.face_shape}，${info.glasses}，${info.expression}，${info.emotion}`
+        text: `${info.gender}，${info.age}岁，颜值${info.beauty}，超过了全球${info.persent}%的人，${info.face_shape}，${info.glasses}，${info.expression}`
     };
 }
 

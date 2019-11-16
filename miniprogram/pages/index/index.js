@@ -14,13 +14,19 @@ Page({
         // loading 信息
         loadingMsg: '',
         // 上传按钮的文案
-        uploadBtnText: '点击上传',
+        uploadBtnText: '点击测量',
         // 程序运行状态 start, uploading, uploadError, analyzing, analyzeError, result
         status: 'start',
         // 用来标记广告状态
-        showAdd: false
+        showAdd: false,
+
+        imagesView: []
     },
     onShareAppMessage() {
+        wx.reportAnalytics('log', {
+            position: 'share',
+            status: this.data.status
+        })
         return {
             title: this.data.shareTitle
         };
@@ -39,7 +45,7 @@ Page({
             case 'start':
                 this.setData({
                     status,
-                    uploadBtnText: '点击上传'
+                    uploadBtnText: '点击测量'
                 });
                 break;
             case 'uploading':
@@ -78,6 +84,10 @@ Page({
     },
 
     chooseIamge() {
+        wx.reportAnalytics('log', {
+            position: 'chooseImage',
+            status: this.data.status
+        })
         return new Promise((resolve, reject) => {
             wx.chooseImage({
                 count: 1,
@@ -123,7 +133,8 @@ Page({
                 result: result.data.text,
                 shareMsg: result.data.shareMsg,
                 shareTitle: result.data.shareTitle,
-                imageUrl: result.data.imageUrl
+                imageUrl: result.data.imageUrl,
+                imagesView: result.data.imagesView
             });
             this.setStatus('result');
         }
@@ -136,15 +147,7 @@ Page({
         this.chooseIamge().then(res => {
             this.setStatus('uploading');
             // 展示广告
-            interstitialAd && interstitialAd.show().then(res => {
-                this.setData({
-                    showAdd: true
-                });
-            }).catch((err) => {
-                this.setData({
-                    showAdd: false
-                });
-            })
+            interstitialAd && interstitialAd.show().catch((err) => {});
             return this.doUpload(res);
         }).then(res => {
             this.setStatus('analyzing');
@@ -158,5 +161,22 @@ Page({
             }
             this.setStatus('analyzeError', '程序出错，请稍后重试。或者点击帮助向客服反馈');
         });
+    },
+
+    reset() {
+        this.setStatus('start');
+        wx.reportAnalytics('log', {
+            position: 'back',
+            status: this.data.status
+        })
+    },
+
+    viewImages() {
+        if (this.data.imagesView && this.data.imagesView.length) {
+            wx.previewImage({
+                urls: this.data.imagesView
+            });
+        }
+        
     }
 });
