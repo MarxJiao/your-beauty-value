@@ -4,7 +4,7 @@
  */
 
 const dataMap = {
-    expression: {
+    expression: {   
         none: '没笑',
         smile: '面带微笑',
         laugh: '兴高采烈'
@@ -48,6 +48,9 @@ module.exports = function (personData) {
 };
 
 function getBaseInfo(personData) {
+    if (personData.age > 10 && personData.age < 18) {
+        personData.age = personData.age - 7;
+    }
     const info = {
         age: personData.age,
         persent: (personData.beauty + personData.beauty / 4 - .3).toFixed(2),

@@ -94,6 +94,9 @@ Page({
                 sizeType: ['compressed'],
                 sourceType: ['album', 'camera'],
                 success: res => {
+                    this.setData({
+                        imageUrl: res.tempFilePaths[0]
+                    })
                     resolve(res);
                 },
                 fail: err => {
@@ -133,8 +136,7 @@ Page({
                 result: result.data.text,
                 shareMsg: result.data.shareMsg,
                 shareTitle: result.data.shareTitle,
-                imageUrl: result.data.imageUrl,
-                imagesView: result.data.imagesView
+                imagesView: [this.data.imageUrl, result.data.imagesView[1]]
             });
             this.setStatus('result');
         }
@@ -177,6 +179,5 @@ Page({
                 urls: this.data.imagesView
             });
         }
-        
     }
 });
