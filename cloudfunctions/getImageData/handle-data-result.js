@@ -5,7 +5,7 @@
 
 const getTextInfo = require('./get-text-info');
 
-module.exports = function (res, imageUrl) {
+module.exports = function (res) {
     const data = res.result;
     let errMsg = '';
     let errno = res.error_code;
@@ -25,8 +25,7 @@ module.exports = function (res, imageUrl) {
     if (data.face_num > 0) {
         const personData = data.face_list[0];
         const result = getTextInfo(personData);
-        result.imageUrl = imageUrl;
-        result.imagesView = [imageUrl, 'cloud://xcx-0b2817.7863-xcx-0b2817-1257953462/active/vote-active.jpg']
+        result.imagesView = ['', 'cloud://xcx-0b2817.7863-xcx-0b2817-1257953462/active/vote-active.jpg']
         return {
             errno: 0,
             data: result
