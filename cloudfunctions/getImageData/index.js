@@ -30,12 +30,19 @@ async function addFile(fileId) {
 exports.main = async (event, context) => {
     addFile(event.fileID);
 
-    // 获取图片临时的 https 地址
-    const imageUrl = await cloud.getTempFileURL({
-        fileList: [event.fileID]
-    }).then(res => {
-        return res.fileList[0].tempFileURL;
-    });
+    let imageBase64 = '';
+    try {
+        const res = await cloud.downloadFile({
+            fileID: event.fileID
+        });
+        imageBase64 = res.fileContent.toString('base64');
+    }
+    catch (err) {
+        return {
+            errno: 9406,
+            errMsg: '获取图片失败!'
+        };
+    }
 
     let token = '';
     try {
@@ -50,8 +57,8 @@ exports.main = async (event, context) => {
 
     let faceData = {};
     try {
-        faceData = await getFaceData({token, imageUrl});
-        return handleResult(faceData, imageUrl);
+        faceData = await getFaceData({token, image: imageBase64});
+        return handleResult(faceData);
     }
     catch (err) {
         return {
