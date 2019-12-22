@@ -20,7 +20,9 @@ Page({
         // 用来标记广告状态
         showAdd: false,
 
-        imagesView: []
+        imagesView: [],
+        backgroundUrl: '',
+        themeBackground: ''
     },
     onShareAppMessage() {
         wx.reportAnalytics('log', {
@@ -38,6 +40,15 @@ Page({
             });
             interstitialAd.onClose(res => {});
         }
+        wx.cloud.callFunction({
+            // 需调用的云函数名
+            name: 'getTheme'
+        }).then(res => {
+            this.setData({
+                backgroundUrl: res.result.backgroundUrl,
+                themeBackground: res.result.backgroundUrl
+            })
+        });
     },
 
     setStatus(status, msg) {
@@ -45,7 +56,8 @@ Page({
             case 'start':
                 this.setData({
                     status,
-                    uploadBtnText: '点击测量'
+                    uploadBtnText: '点击测量',
+                    backgroundUrl: this.data.themeBackground
                 });
                 break;
             case 'uploading':
@@ -77,7 +89,8 @@ Page({
             case 'result':
                 this.setData({
                     status,
-                    uploadBtnText: '重新测量'
+                    uploadBtnText: '重新测量',
+                    backgroundUrl: ''
                 });
                 break;
         }
