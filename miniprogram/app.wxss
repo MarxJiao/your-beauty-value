@@ -1,10 +1,14 @@
 /**app.wxss**/
 .container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  box-sizing: border-box;
-  font-size: 14px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+    font-size: 14px;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: bottom;
+    min-height: 100vh;
 }
 
 .button {
