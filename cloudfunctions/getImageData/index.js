@@ -35,6 +35,20 @@ exports.main = async (event, context) => {
         const res = await cloud.downloadFile({
             fileID: event.fileID
         });
+        try {
+            await cloud.openapi.security.imgSecCheck({
+                media: {
+                  contentType: 'image/png',
+                  value: res.fileContent
+                }
+            });
+        }
+        catch (err) {
+            return {
+                errno: 87014,
+                errMsg: '内容含有违法违规内容'
+            }
+        }
         imageBase64 = res.fileContent.toString('base64');
     }
     catch (err) {

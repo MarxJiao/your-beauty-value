@@ -8,7 +8,8 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext()
 
     return {
-        backgroundUrl: 'https://mark-factory.bj.bcebos.com/your-beauty-value/happy.png',
+        // backgroundUrl: 'https://mark-factory.bj.bcebos.com/your-beauty-value/happy.png',
+        backgroundUrl: '',
         mainColor: '',
         subColor: ''
     }
