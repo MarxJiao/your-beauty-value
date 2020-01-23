@@ -59,11 +59,12 @@ function getBaseInfo(personData) {
         face_shape: dataMap.face_shape[personData.face_shape.type],
         gender: dataMap.gender[personData.gender.type],
         glasses: dataMap.glasses[personData.glasses.type],
-        emotion: dataMap.emotion[personData.emotion.type]
+        emotion: dataMap.emotion[personData.emotion.type],
+        happieness: personData.beauty * 365
     };
     return {
         info,
-        text: `${info.gender}，${info.age}岁，颜值${info.beauty}，超过了全球${info.persent}%的人，${info.face_shape}，${info.glasses}，${info.expression}`
+        text: `${info.gender}，${info.age}岁，颜值${info.beauty}，超过了全球${info.persent}%的人，${info.face_shape}，${info.glasses}，${info.expression}。新年新气象，你的福气值高达${info.happieness}。`
     };
 }
 
@@ -71,36 +72,40 @@ function getShareInfo(info) {
     let shareMsg = '';
     let shareTitle = '';
     if (info.gender === '男') {
+        if (info.beauty > 70) {
+            shareMsg = '你那笑魇如花的脸庞，宛若宠溺的桃花挂满枝头，只待微风轻拂，飘散芬芳';
+            shareTitle = '你那笑魇如花的脸庞，宛若宠溺的桃花挂满枝头，只待微风轻拂，飘散芬芳。';
+        }
         if (info.beauty > 60) {
             shareMsg = '明明可以靠脸吃饭，偏偏要靠才华';
             shareTitle = '我明明可以靠脸吃饭，偏偏要靠才华。';
         }
         else if (info.beauty > 50) {
-            shareMsg = '英俊潇洒，一表人才';
+            shareMsg = '清风拂面，朗朗君子大抵如此';
             shareTitle = '具测量，我英俊潇洒，一表人才。';
         }
         else if (info.beauty > 40) {
-            shareMsg = '其貌不扬';
-            shareTitle = '具测量，我长得很平凡。';
+            shareMsg = '你是泰戈尔眼中的秋叶静美';
+            shareTitle = '具测量，我长得很静美。';
         }
         else {
             if (info.age > 30) {
                 shareMsg = '男人又老又丑不要紧，最重要的是要有才华。';
-                shareTitle = '男人又老又丑不要紧，最重要的是要有才华。';
+                shareTitle = '你是冬日暖阳的温存，你是落日余晖的惊艳。';
             }
             else if (info.age < 20) {
-                shareMsg = '颜值还在发育中，以后会好的。当然，也可能更差';
+                shareMsg = '你是泰戈尔眼中的夏花绚丽';
                 shareTitle = '我的颜值还在发育中，以后会好的。';
             }
             else {
                 shareMsg = '男人又老又丑不要紧，最重要的是要有才华。';
-                shareTitle = '嗷呜~~~。';
+                shareTitle = '你是冬日暖阳的温存，你是落日余晖的惊艳。';
             }
         }
     }
     else {
         if (info.beauty > 80) {
-            shareMsg = '颜值已经突破天际';
+            shareMsg = '颜值已经突破天际，从你看似平淡的眼神中，看到了奥黛丽赫本的孤傲与芬芳';
             shareTitle = '我的颜值已经突破天际。';
         }
         if (info.beauty > 60) {
@@ -108,11 +113,11 @@ function getShareInfo(info) {
             shareTitle = '我颜值不高，沉鱼落雁，闭月羞花而已。';
         }
         else if (info.beauty > 50) {
-            shareMsg = '天生丽质';
+            shareMsg = '天生丽质。眼睛好亮！就像天空中最亮的星星';
             shareTitle = '我属于天生丽质那种。';
         }
         else if (info.beauty > 40) {
-            shareMsg = '很有气质';
+            shareMsg = '从你看似平淡的眼神中，看到了奥黛丽赫本的孤傲与芬芳';
             shareTitle = '经测量，我很有气质。';
         }
         else {
@@ -120,7 +125,7 @@ function getShareInfo(info) {
                 shareMsg = '笑魇如花，貌美也如花';
             }
             else if (info.age > 30) {
-                shareMsg = '主要看气质。还有，多读书';
+                shareMsg = '你那笑魇如花的脸庞，宛若宠溺的桃花挂满枝头，只待微风轻拂，飘散芬芳';
             }
             else {
                 shareMsg = '如花美眷，似水年华';
