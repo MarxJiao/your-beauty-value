@@ -22,7 +22,8 @@ Page({
 
         imagesView: [],
         backgroundUrl: '',
-        themeBackground: ''
+        themeBackground: '',
+        showGridAd: true
     },
     onShareAppMessage() {
         wx.reportAnalytics('log', {
@@ -192,5 +193,10 @@ Page({
                 urls: this.data.imagesView
             });
         }
+    },
+    gridADError() {
+        this.setData({
+            showGridAd: false
+        })
     }
 });

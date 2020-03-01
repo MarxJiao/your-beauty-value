@@ -30,4 +30,7 @@
     </view>
 
     <navigator class="help-button" url="/pages/help/help">了解更多</navigator>
+    <ad unit-id="adunit-ae137be5978bcde0" ad-intervals="30" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white" binderror="gridADError"
+    wx:if="{{showGridAd}}"></ad>
+    <ad ad-intervals="30" unit-id="adunit-9c5bf5ca423623ed" wx:else></ad>
 </view>
