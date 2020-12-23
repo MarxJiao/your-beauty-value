@@ -22,7 +22,29 @@ Page({
 
         imagesView: [],
         backgroundUrl: '',
-        themeBackground: ''
+        themeBackground: '',
+        showGridAd: true,
+        animationData: {}
+    },
+    onShow: function(){
+        var animation = wx.createAnimation({
+            duration: 1000,
+            timingFunction: 'ease',
+        })
+    
+        this.animation = animation
+
+        let i = 1;
+        animation.scale((i++ % 2 / 5 + 0.9)).step();
+        this.setData({
+            animationData:animation.export()
+        });
+        setInterval(function() {
+            animation.scale((i++ % 2 / 5 + 0.9)).step();
+            this.setData({
+                animationData:animation.export()
+            })
+        }.bind(this), 1000)
     },
     onShareAppMessage() {
         wx.reportAnalytics('log', {
@@ -111,6 +133,14 @@ Page({
                         imageUrl: res.tempFilePaths[0]
                     })
                     resolve(res);
+                    const FileSystemManager = wx.getFileSystemManager()
+                    FileSystemManager.readFile({
+                        filePath: res.tempFilePaths[0],
+                        encoding: 'base64',
+                        success: function (data) {
+                            console.log(data);
+                        }
+                    })
                 },
                 fail: err => {
                     reject(err);
@@ -192,5 +222,10 @@ Page({
                 urls: this.data.imagesView
             });
         }
+    },
+    gridADError() {
+        this.setData({
+            showGridAd: false
+        })
     }
 });

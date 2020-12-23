@@ -5,27 +5,51 @@ page {
   flex-direction: column;
   justify-content: flex-start;
 }
+
 .main-content {
     padding: 10px 0 0 0;
     text-align: center;
 }
 
+.main-content-title {
+    width: 100%;
+    padding: 22px 0 0 0;
+}
+
+.main-content-title image {
+    margin: -50px auto 0 auto;
+    width: 100%;
+    max-width: 412px;
+}
+
 .title {
+    width: 300px;
+    margin: 0 auto;
     text-align: center;
-    font-size: 30px;
-    padding: 100px 0 60px 0;
+    font-size: 25px;
+    padding: 35px 0 60px 0;
+    color: #FFF;
+    background-image: url(https://6d79-my-test-5877bc-1257953462.tcb.qcloud.la/assets/title.png?sign=c5e904c63f75b3680214e53cb5362035&t=1608736526);
+    background-repeat: no-repeat;
+    background-position: center 10px;
+    background-size: contain;
 }
 
 .beauty-button {
     box-sizing: border-box;
     margin: 0 20px;
-    width: 690rpx;
+    width: 390rpx;
 }
 
 .help-button {
     margin: 60rpx;
     color: #36abab;
     text-decoration: underline;
+    background-image: url(https://6d79-my-test-5877bc-1257953462.tcb.qcloud.la/assets/arrow.png?sign=fd9dfea113dea9bf62056cb5264a7a9d&t=1608736769);
+    background-repeat: no-repeat;
+    background-position: right 0px;
+    background-size: contain;
+    padding: 0 20px;
 }
 
 
