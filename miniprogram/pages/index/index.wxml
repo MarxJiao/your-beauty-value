@@ -1,10 +1,15 @@
 <!--index.wxml-->
 <view class="container" style="background-image:url({{backgroundUrl}})">
-
-    <view class="title" wx:if="{{status !== 'result'}}">
-        <view>想知道你的颜值</view>
-        <view>有多高吗?</view>
+    <view class="main-content-title" wx:if="{{status !== 'result'}}" >
+        <view class="title">
+            <view>想知道你的颜值</view>
+            <view>有多高吗?</view>
+        </view>
+        <view>
+            <image mode="aspectFit" src="cloud://my-test-5877bc.6d79-my-test-5877bc-1257953462/assets/middle.png"></image>
+        </view>
     </view>
+    
 
     <view class="error-msg" wx:if="{{status === 'uploadError' || status === 'analyzeError'}}">错误信息：{{errMsg}}</view>
 
@@ -21,7 +26,7 @@
         </view>
     </view>
 
-    <view class="button beauty-button" wx:if="{{status !== 'uploading' && status !== 'analyzing'}}" bindtap="action">
+    <view animation="{{animationData}}" class="button beauty-button" wx:if="{{status !== 'uploading' && status !== 'analyzing'}}" bindtap="action">
         {{uploadBtnText}}
     </view>
 
@@ -30,7 +35,4 @@
     </view>
 
     <navigator class="help-button" url="/pages/help/help">了解更多</navigator>
-    <ad unit-id="adunit-ae137be5978bcde0" ad-intervals="30" ad-type="grid" grid-opacity="0.8" grid-count="5" ad-theme="white" binderror="gridADError"
-    wx:if="{{showGridAd}}"></ad>
-    <ad ad-intervals="30" unit-id="adunit-9c5bf5ca423623ed" wx:else></ad>
 </view>

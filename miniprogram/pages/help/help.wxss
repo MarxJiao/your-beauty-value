@@ -13,4 +13,7 @@ page {
     height: 300rpx;
 }
 
-
+.card-text-hightlight {
+  display: inline;
+  color: #000000;
+}
