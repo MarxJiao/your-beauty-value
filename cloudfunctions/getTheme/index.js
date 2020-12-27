@@ -8,7 +8,7 @@ exports.main = async (event, context) => {
     const wxContext = cloud.getWXContext()
 
     return {
-        backgroundUrl: 'https://6d79-my-test-5877bc-1257953462.tcb.qcloud.la/assets/bottom.png?sign=2f04602fb6eea9c5d44c1f70d8de8fe1&t=1608736452',
+        backgroundUrl: 'https://6d79-my-test-5877bc-1257953462.tcb.qcloud.la/assets/2021-new-year.001.png?sign=8b7fe05c2203e38a4c88c6e1ef86b59a&t=1609078739',
         // backgroundUrl: '',
         mainColor: '',
         subColor: ''
